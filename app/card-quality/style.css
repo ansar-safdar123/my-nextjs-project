@@ -1,0 +1,9 @@
+.text-gradient-exo {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFED89 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800; /* same as Tailwind's font-extrabold */
+    font-family: var(--font-exo);
+    font-style: italic;
+  }
