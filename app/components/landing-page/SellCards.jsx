@@ -29,7 +29,7 @@ export default function SellCards() {
       src: "/images/buyCards/5.png",
       title: "Castform",
       price: "$121.90",
-      views: "22",
+      views: "pk",
     },
   ];
 
@@ -143,7 +143,7 @@ export default function SellCards() {
                 }`}
               >
                 <Image
-                  src={card.src}
+                  src={`${card.src}`}
                   alt={card.title}
                   width={260}
                   height={350}
