@@ -3,29 +3,41 @@
 
 .menu-container {
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   white-space: nowrap;
   position: relative;
 }
 
 .menu {
   display: inline-flex;
-  padding: 20px 0;
 }
 
 .menu-item {
-  padding: 0 40px;
+  padding: 0 50px;
     cursor: pointer;
     user-select: none;
     transition: color 0.3s ease;
     font-family: "Fjalla One", sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size:100px;
+    letter-spacing: -5.5;
+    font-size:160px;
     /* color:transparent; */
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 2px #fff;
     text-transform: uppercase;
+    /* line-height: 1.1; */
+}
+@media (min-width: 768px) { /* sm breakpoint */
+  .menu-item {
+    line-height: 1.1;
+  }
+}
+@media (max-width: 768px){
+ .menu-item{
+   letter-spacing: 3;
+  }
+
 }
 
 /* Tablets (below 1024px) */
@@ -60,11 +72,38 @@
     padding: 0 10px;
   }
 }
+
+.menu-item.deActive{
+  animation: deActiveBounc 1s ease-in-out;
+}
+@keyframes deActiveBounc{
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-100px);
+  }
+  40% {
+    transform: translateX(100px);
+  }
+  60% {
+    transform: translateX(-50px);
+  }
+  80% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .menu-item.active {
   color: #fff;
   -webkit-text-fill-color: #fff;
   animation: bounce 1.5s ease-in-out;
 }
+
+
 
 /* Default bounce (for large screens) */
 @keyframes bounce {
@@ -72,16 +111,16 @@
     transform: translateX(0);
   }
   20% {
-    transform: translateX(100px);
-  }
-  40% {
     transform: translateX(-100px);
   }
+  40% {
+    transform: translateX(100px);
+  }
   60% {
-    transform: translateX(50px);
+    transform: translateX(-50px);
   }
   80% {
-    transform: translateX(-50px);
+    transform: translateX(50px);
   }
   100% {
     transform: translateX(0);
@@ -95,16 +134,16 @@
       transform: translateX(0);
     }
     20% {
-      transform: translateX(60px);
-    }
-    40% {
       transform: translateX(-60px);
     }
+    40% {
+      transform: translateX(60px);
+    }
     60% {
-      transform: translateX(30px);
+      transform: translateX(-30px);
     }
     80% {
-      transform: translateX(-30px);
+      transform: translateX(30px);
     }
     100% {
       transform: translateX(0);
@@ -119,16 +158,16 @@
       transform: translateX(0);
     }
     20% {
-      transform: translateX(30px);
-    }
-    40% {
       transform: translateX(-30px);
     }
+    40% {
+      transform: translateX(30px);
+    }
     60% {
-      transform: translateX(15px);
+      transform: translateX(-15px);
     }
     80% {
-      transform: translateX(-15px);
+      transform: translateX(15px);
     }
     100% {
       transform: translateX(0);

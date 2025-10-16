@@ -90,7 +90,7 @@ export default function Home() {
   return (
     <div className="">
       <div className="home">
-        <div className="text-white px-3 sm:px-7 md:px-20 py-4 ">
+        <div className="text-white px-3 sm:px-7 md:px-20 ">
           <h1 className="text-center VCR-font-family">WELCOME TO OPENTHATPACK</h1>
 
           <CircularMenu
@@ -113,8 +113,7 @@ export default function Home() {
         </div>
 
         <div className="flex font-exo space-x-5 items-end px-8 md:px-20  pb-4 text-white justify-between">
-          <div className="md:w-[40%] w-full relative">
-            {/* <p className="text-lg md:text-2xl mb-1 font-vcr">//OPEN PACK</p> */}
+          <div className="custom-h lg:w-[40%] md:-mt-40 w-full relative">
             <AnimatePresence mode="wait">
               <motion.p
                 key={activeKey}
@@ -128,26 +127,26 @@ export default function Home() {
               </motion.p>
             </AnimatePresence>
 
-            <h1 className="font-normal md:leading-12 text-glow leading-6 text-[#FFFFFF] text-xl VCR-font-family md:text-[46px] uppercase ">
+            <h1 className="font-normal md:leading-8 mt-4 text-glow leading-6 text-[#FFFFFF] text-xl VCR-font-family md:text-[34px] uppercase ">
               Virtually Open Packs with a wide range of brands etc etc text
             </h1>
           </div>
 
           <div
-            className={`fixed z-[9999] bottom-6 right-6  transition-opacity duration-500 `}
+            className={`fixed z-[9999] bottom-5 right-6 md:right-16  transition-opacity duration-500 `}
           >
             <button
-              className="sticky-button relative w-10 h-10 md:w-16 md:h-16 border-2 border-white overflow-hidden group bg-black "
+              className="sticky-button relative w-10 h-10 md:w-12 md:h-[50px] border-2 border-white overflow-hidden group "
               onClick={() => setIsOpen(true)}
             >
               {/* Hover background that slides up */}
               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
 
               {/* Menu lines */}
-              <div className="relative flex flex-col items-center justify-center h-full space-y-1 md:space-y-2.5">
-                <div className="w-6 md:w-10 h-0.5 bg-white group-hover:bg-gray-900 transition-colors duration-500"></div>
-                <div className="w-6 md:w-10 h-0.5 bg-white group-hover:bg-gray-900 transition-colors duration-500"></div>
-                <div className="w-6 md:w-10 h-0.5 bg-white group-hover:bg-gray-900 transition-colors duration-500"></div>
+              <div className="relative flex flex-col items-center justify-center h-full space-y-1 md:space-y-2">
+                <div className="w-5 md:w-7 h-0.5 bg-white group-hover:bg-gray-900 transition-colors duration-500"></div>
+                <div className="w-5 md:w-7 h-0.5 bg-white group-hover:bg-gray-900 transition-colors duration-500"></div>
+                <div className="w-5 md:w-7 h-0.5 bg-white group-hover:bg-gray-900 transition-colors duration-500"></div>
               </div>
             </button>
           </div>

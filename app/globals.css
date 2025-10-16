@@ -61,10 +61,10 @@ body {
   .text-glow {
     color: #ffffff;
     text-shadow:
-    0 0 5px rgba(255, 255, 255, 0.6),
-    0 0 10px rgba(0, 170, 255, 0.8),
-    0 0 20px rgba(0, 170, 255, 0.6),
-    0 0 40px rgba(0, 170, 255, 0.4);
+    0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.4),
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.4);
     /* animation: flicker 2s infinite alternate; */
   }
 
@@ -121,3 +121,14 @@ body {
   scrollbar-width: none; /* for Firefox */
 }
 
+
+.img-bg-shadow{
+  box-shadow: 0px 0px 80px 2px white
+}
+
+@media (min-height: 700px) {
+    .custom-h {
+      /* background-color: red; */
+      margin-top: 50px;
+    }
+  }

@@ -28,7 +28,7 @@ export default function RecentPullsSlider() {
   const duplicatedCards = [...cards, ...cards, ...cards];
 
   return (
-    <div className="home !z-0">
+    <div className="recent-pulls-bg md:min-h-screen !z-0">
       <motion.div
         ref={recentPullsRef}
         initial={{ opacity: 0, y: 300 }}
@@ -41,11 +41,11 @@ export default function RecentPullsSlider() {
         <div className=" flex flex-col items-center  justify-center overflow-hidden">
           {/* Title */}
           <h1
-  className="text-4xl md:text-9xl my-10 md:my-28 font-fjalia font-bold text-white tracking-wider bg-reflect-text "
-  data-text="RECENT PULLS"
->
-  RECENT PULLS
-</h1>
+            className="text-4xl md:text-9xl my-10 md:my-28 font-fjalia font-bold text-white tracking-wider bg-reflect-text "
+            data-text="RECENT PULLS"
+          >
+            RECENT PULLS
+          </h1>
 
           {/* Slider Container */}
           <div className="relative w-full mb-20 z-40 md:mb-32">
@@ -69,7 +69,7 @@ export default function RecentPullsSlider() {
                     width={800}
                     height={800}
                     quality={100}
-                    className="w-48 h-64 rounded-lg shadow-2xl object-cover transition-all duration-500 ease-in-out 
+                    className="w-32 sm:w-48 sm:h-64 rounded-lg shadow-2xl object-cover transition-all duration-500 ease-in-out 
       group-hover:scale-125 group-hover:-rotate-6"
                   />
                 </div>
