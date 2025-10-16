@@ -11,12 +11,12 @@ const Withdraw = () => {
               src="/images/landingPage/withdraw/arrowPlan.png"
               alt="arrow plan"
               fill
-              className="object-cover h-full w-full"
+              className="object-cover"
             />
           </div>
         </div>
         <div className="flex justify-center  ">
-          <div className="w-[252px] h-[250px] md:h-[406px] box-float">
+          <div className="md:w-[452px] w-[130px] h-[240px] md:h-[306px] box-float">
             <Image
               src="/images/landingPage/withdraw/box.png"
               alt="arror plan"
@@ -25,8 +25,8 @@ const Withdraw = () => {
             />
           </div>
         </div>
-      
-        <div className="absolute cloud-animation top-40 md:top-70 right-0 overflow-hidden h-[209px]">
+
+        <div className="absolute cloud-animation -top-15 md:top-70 right-0 overflow-hidden h-[209px]">
           <Image
             src="/images/landingPage/withdraw/cloud.png"
             alt="arror plan"
@@ -36,7 +36,7 @@ const Withdraw = () => {
             priority
           />
         </div>
-        <div className="absolute cloud-animation top-40 md:top-120 right-0 overflow-hidden h-[209px]">
+        <div className="absolute cloud-animation -top-5 md:top-120 right-0 overflow-hidden h-[209px]">
           <Image
             src="/images/landingPage/withdraw/cloud.png"
             alt="arror plan"
@@ -46,7 +46,7 @@ const Withdraw = () => {
             priority
           />
         </div>
-        <div className="absolute cloud-animation top-40 md:top-80 right-200 overflow-hidden h-[609px]">
+        <div className="absolute cloud-animation top-10 md:top-40 -right-50 overflow-hidden h-[259px]">
           <Image
             src="/images/landingPage/withdraw/cloud.png"
             alt="arror plan"
@@ -56,7 +56,7 @@ const Withdraw = () => {
             priority
           />
         </div>
-        <div className="absolute cloud-animation top-30 right-250 overflow-hidden h-[250px]">
+        <div className="absolute cloud-animation top-10 left-65 overflow-hidden w-[350px] h-[350px]">
           <Image
             src="/images/landingPage/withdraw/cloud1.png"
             alt="arror plan"
@@ -66,7 +66,7 @@ const Withdraw = () => {
             priority
           />
         </div>
-        <div className="absolute cloud-animation top-5 right-15 overflow-hidden md:w-[300px] md:h-[509px]">
+        <div className="absolute cloud-animation top-20 -right-15 overflow-hidden md:w-[400px] h-[209px]">
           <Image
             src="/images/landingPage/withdraw/cloud1.png"
             alt="arror plan"
@@ -76,7 +76,7 @@ const Withdraw = () => {
             priority
           />
         </div>
-         <div className="absolute cloud-animation top-5 right-15 overflow-hidden w-[500px] h-[509px]">
+        <div className="absolute cloud-animation -bottom-50 right-15 overflow-hidden w-[350px] h-[309px]">
           <Image
             src="/images/landingPage/withdraw/cloud1.png"
             alt="arror plan"

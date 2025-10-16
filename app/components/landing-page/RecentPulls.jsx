@@ -29,15 +29,7 @@ export default function RecentPullsSlider() {
 
   return (
     <div className="recent-pulls-bg md:min-h-screen !z-0">
-      <motion.div
-        ref={recentPullsRef}
-        initial={{ opacity: 0, y: 300 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 300 }}
-        transition={{
-          duration: 0.8,
-          ease: [0.22, 1, 0.36, 1], // Smooth easing curve
-        }}
-      >
+      
         <div className=" flex flex-col items-center  justify-center overflow-hidden">
           {/* Title */}
           <h1
@@ -93,7 +85,7 @@ export default function RecentPullsSlider() {
             }}
           />
         </div>
-      </motion.div>
+
     </div>
   );
 }
