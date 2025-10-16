@@ -254,16 +254,16 @@
 
 //         {/* Credit Balance Display */}
 //         {showBalance && (
-          // <div className="absolute inset-0 flex items-center justify-center z-20 fade-in">
-          //   <div className=" text-white py-8 rounded-2xl shadow-2xl">
-          //     <p className="text-sm text-center font-exo font-semibold tracking-wider mb-2">
-          //       CREDIT BALANCE
-          //     </p>
-          //     <p className="text-5xl text-center px-12 rounded-full border font-bold">
-          //       $600
-          //     </p>
-          //   </div>
-          // </div>
+// <div className="absolute inset-0 flex items-center justify-center z-20 fade-in">
+//   <div className=" text-white py-8 rounded-2xl shadow-2xl">
+//     <p className="text-sm text-center font-exo font-semibold tracking-wider mb-2">
+//       CREDIT BALANCE
+//     </p>
+//     <p className="text-5xl text-center px-12 rounded-full border font-bold">
+//       $600
+//     </p>
+//   </div>
+// </div>
 //         )}
 //       </div>
 //     </>
@@ -271,7 +271,6 @@
 // };
 
 // export default Back;
-
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
@@ -288,14 +287,14 @@ const Back = () => {
       }, 600);
       return () => clearTimeout(timer);
     }
-    
+
     if (showBalance) {
       const timer = setTimeout(() => {
         setShowBalance(false);
         setImagesHidden(false);
         setIsFlipped(false);
       }, 5000);
-      
+
       return () => clearTimeout(timer);
     }
   }, [showBalance, imagesHidden]);
@@ -332,7 +331,7 @@ const Back = () => {
 
         @keyframes flipToFront {
           0% {
-            transform: perspective(1000px) rotateY(180deg);
+            transform: perspective(1000px) rotateY(-180deg);
           }
           100% {
             transform: perspective(1000px) rotateY(0deg);
@@ -345,7 +344,8 @@ const Back = () => {
             opacity: 1;
           }
           100% {
-            transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) rotate(-5deg);
+            transform: translate(calc(-50vw + 50px), calc(-50vh + 50px))
+              rotate(-5deg);
             opacity: 1;
           }
         }
@@ -356,7 +356,8 @@ const Back = () => {
             opacity: 1;
           }
           100% {
-            transform: translate(calc(50vw - 50px), calc(50vh - 50px)) rotate(5deg);
+            transform: translate(calc(50vw - 50px), calc(50vh - 50px))
+              rotate(5deg);
             opacity: 1;
           }
         }
@@ -383,7 +384,8 @@ const Back = () => {
 
         @keyframes returnFromTopLeft {
           0% {
-            transform: translate(calc(-50vw + 50px), calc(-50vh + 50px)) rotate(-5deg);
+            transform: translate(calc(-50vw + 50px), calc(-50vh + 50px))
+              rotate(-5deg);
             opacity: 1;
           }
           100% {
@@ -394,7 +396,8 @@ const Back = () => {
 
         @keyframes returnFromBottomRight {
           0% {
-            transform: translate(calc(50vw - 50px), calc(50vh - 50px)) rotate(5deg);
+            transform: translate(calc(50vw - 50px), calc(50vh - 50px))
+              rotate(5deg);
             opacity: 1;
           }
           100% {
@@ -440,11 +443,11 @@ const Back = () => {
         {/* Left Image */}
         <div
           className={`sm:w-[170px] w-[130px] transition-all duration-300 sm:-rotate-[5deg] h-[200px] mt-7 sm:mt-0 md:h-[300px] ${
-            !showBalance ? 'hover:-rotate-7 hover:-translate-x-5 blur-[2px] hover:blur-[0]' : ''
-          } ${
-            imagesHidden && !showBalance ? 'move-top-left' : ''
-          } ${
-            !imagesHidden && showBalance ? 'return-top-left' : ''
+            !showBalance
+              ? "hover:-rotate-7 hover:-translate-x-5 blur-[2px] hover:blur-[0]"
+              : ""
+          } ${imagesHidden && !showBalance ? "move-top-left" : ""} ${
+            !imagesHidden && showBalance ? "return-top-left" : ""
           }`}
         >
           <Image
@@ -462,18 +465,22 @@ const Back = () => {
           onMouseEnter={handleCenterHover}
           onMouseLeave={handleCenterLeave}
           onClick={handleCenterClick}
-          style={{ transformStyle: 'preserve-3d' }}
+          style={{ transformStyle: "preserve-3d" }}
         >
           {!showBalance ? (
             <>
               {/* Front - Pokemon */}
               <div
                 className={`absolute inset-0 ${
-                  isFlipped ? 'flip-to-back' : !imagesHidden ? 'flip-to-front' : ''
-                } ${imagesHidden ? 'fade-out' : ''}`}
+                  isFlipped
+                    ? "flip-to-back"
+                    : !imagesHidden
+                    ? "flip-to-front"
+                    : ""
+                } ${imagesHidden ? "fade-out" : ""}`}
                 style={{
-                  backfaceVisibility: 'hidden',
-                  transformStyle: 'preserve-3d'
+                  backfaceVisibility: "hidden",
+                  transformStyle: "preserve-3d",
                 }}
               >
                 <Image
@@ -487,16 +494,16 @@ const Back = () => {
               {/* Back - Pokemon1 */}
               <div
                 className={`absolute inset-0 ${
-                  isFlipped ? 'flip-to-front' : 'flip-to-back'
-                } ${imagesHidden ? 'fade-out' : ''}`}
+                  isFlipped ? "flip-to-front" : "flip-to-back"
+                } ${imagesHidden ? "fade-out" : ""}`}
                 style={{
-                  backfaceVisibility: 'hidden',
-                  transformStyle: 'preserve-3d',
-                  transform: 'perspective(1000px) rotateY(180deg)'
+                  backfaceVisibility: "hidden",
+                  transformStyle: "preserve-3d",
+                  transform: "perspective(1000px) rotateY(180deg)",
                 }}
               >
                 <Image
-                  src="/images/landingPage/openPacks/pokemon1.png"
+                  src="/images/landingPage/sellBack/pokemon1.png"
                   alt="pokemon back"
                   fill
                   className="object-contain"
@@ -509,11 +516,11 @@ const Back = () => {
         {/* Right Image */}
         <div
           className={`sm:w-[170px] w-[130px] transition-all duration-300 mt-7 sm:mt-0 sm:rotate-[5deg] h-[200px] md:h-[300px] ${
-            !showBalance ? 'hover:rotate-7 hover:translate-x-5 blur-[2px] hover:blur-[0]' : ''
-          } ${
-            imagesHidden && !showBalance ? 'move-bottom-right' : ''
-          } ${
-            !imagesHidden && showBalance ? 'return-bottom-right' : ''
+            !showBalance
+              ? "hover:rotate-7 hover:translate-x-5 blur-[2px] hover:blur-[0]"
+              : ""
+          } ${imagesHidden && !showBalance ? "move-bottom-right" : ""} ${
+            !imagesHidden && showBalance ? "return-bottom-right" : ""
           }`}
         >
           <Image
@@ -527,7 +534,7 @@ const Back = () => {
 
         {/* Credit Balance Display */}
         {showBalance && (
-                  <div className="absolute inset-0 flex items-center justify-center z-20 fade-in">
+          <div className="absolute inset-0 flex items-center justify-center z-20 fade-in">
             <div className=" text-white py-8 rounded-2xl shadow-2xl">
               <p className="text-sm text-center font-exo font-semibold tracking-wider mb-2">
                 CREDIT BALANCE
