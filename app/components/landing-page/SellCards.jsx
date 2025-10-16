@@ -143,7 +143,7 @@ export default function SellCards() {
                 }`}
               >
                 <Image
-                  src="/images/buyCards/4.png"
+                  src={`${card.src}`}
                   alt={card.title}
                   width={260}
                   height={350}
