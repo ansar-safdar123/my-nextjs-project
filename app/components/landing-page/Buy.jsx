@@ -143,7 +143,7 @@ const Buy = () => {
         </div>
 
         {/* Card stack */}
-        <div className="-space-x-40 sm:-space-x-24 mb-10 flex items-center justify-center">
+        <div className="-space-x-24 mb-10 flex items-center justify-center">
           {cards.map((card) => {
             const isSelected = selectedCards.find((c) => c.id === card.id);
             const isAnimating = animatingCard?.id === card.id;

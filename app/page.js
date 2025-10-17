@@ -4,7 +4,6 @@ import Image from "next/image";
 import "./style.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Tabs from "./components/Tabs.jsx";
 import Draw from "./components/landing-page/Draw.jsx";
 import OpenPacks from "./components/landing-page/OpenPacks.jsx";
 import SellCards from "./components/landing-page/SellCards.jsx";
@@ -88,10 +87,10 @@ export default function Home() {
   const currentTitle = tabTitles[activeKey] || "OPEN PACK";
 
   return (
-    <div className="">
-      <div className="home">
-        <div className="text-white px-3 sm:px-7 md:px-20 ">
-          <h1 className="text-center VCR-font-family">
+    <>
+      <div className="home md:min-h-screen">
+        <div className="text-white  px-3 sm:px-7 md:px-20 ">
+          <h1 className="text-center pt-2 VCR-font-family">
             WELCOME TO OPENTHATPACK
           </h1>
 
@@ -191,37 +190,37 @@ export default function Home() {
           </div>
           <a
             href="#"
-            class="px-3 rounded-lg text-[#4E46CB] hover:bg-[#4E46CB] transition hover:text-white duration-300"
+            className="px-3 rounded-lg text-[#4E46CB] md:text-3xl hover:scale-[1.01] transition hover:text-black duration-300"
           >
             SHOP
           </a>
           <a
             href="#"
-            class="px-3 rounded-lg text-[#4E46CB] hover:bg-[#4E46CB] transition hover:text-white duration-300"
+            className="px-3 rounded-lg text-[#4E46CB] md:text-3xl hover:scale-[1.01] transition hover:text-black duration-300"
           >
             MARKETPLACE
           </a>
           <a
             href="#"
-            class="px-3 rounded-lg text-[#4E46CB] hover:bg-[#4E46CB] transition hover:text-white duration-300"
+            className="px-3 rounded-lg text-[#4E46CB] md:text-3xl hover:scale-[1.01] transition hover:text-black duration-300"
           >
             HOW IT WORKS
           </a>
           <a
             href="#"
-            class="px-3 rounded-lg text-[#4E46CB] hover:bg-[#4E46CB] transition hover:text-white duration-300"
+            className="px-3 rounded-lg text-[#4E46CB] md:text-3xl hover:scale-[1.01] transition hover:text-black duration-300"
           >
             QUALITY
           </a>
           <a
             href="#"
-            class="px-3 rounded-lg text-[#4E46CB] hover:bg-[#4E46CB] transition hover:text-white duration-300"
+            className="px-3 rounded-lg text-[#4E46CB] md:text-3xl hover:scale-[1.01] transition hover:text-black duration-300"
           >
             FAIRNESS
           </a>
           <a
             href="#"
-            class="px-3 rounded-lg text-[#4E46CB] hover:bg-[#4E46CB] transition hover:text-white duration-300"
+            className="px-3 rounded-lg text-[#4E46CB] md:text-3xl hover:scale-[1.01] transition hover:text-black duration-300"
           >
             FAQS
           </a>
@@ -248,6 +247,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

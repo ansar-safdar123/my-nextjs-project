@@ -6,17 +6,28 @@ import { useState, useEffect } from "react";
 export default function CollectCardsCarousel() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // useEffect(() => {
-  //   if (hoveredCard) {
-  //     setIsClosing(false)
-  //     const timer = setTimeout(() => {
-  //       handleClose()
-  //     }, 4000)
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      // Check if click is on a card or the enlarged card
+      const isCard = e.target.closest('.card-item');
+      const isEnlargedCard = e.target.closest('.enlarged-card-container');
+      
+      // If click is outside both cards, close the enlarged view
+      if (hoveredCard && !isCard && !isEnlargedCard) {
+        handleClose();
+      }
+    };
 
-  //     return () => clearTimeout(timer)
-  //   }
-  // }, [hoveredCard])
+    if (hoveredCard) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [hoveredCard]);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -26,9 +37,32 @@ export default function CollectCardsCarousel() {
     }, 600);
   };
 
+  // const handleCardHover = (card) => {
+  //   // If already hovering a card, flip out then flip in new card
+  //   if (hoveredCard && hoveredCard.id !== card.id) {
+  //     setIsTransitioning(true);
+  //     setTimeout(() => {
+  //       setHoveredCard(card);
+  //       setIsTransitioning(false);
+  //     }, 300);
+  //   } else {
+  //     setHoveredCard(card);
+  //     setIsClosing(false);
+  //   }
+  // };
+
   const handleCardHover = (card) => {
-    setHoveredCard(card);
-    setIsClosing(false);
+    // If already hovering a card, fade out then fade in new card
+    if (hoveredCard && hoveredCard.id !== card.id) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setHoveredCard(card);
+        setIsTransitioning(false);
+      }, 200);
+    } else {
+      setHoveredCard(card);
+      setIsClosing(false);
+    }
   };
 
   const cards = [
@@ -69,34 +103,38 @@ export default function CollectCardsCarousel() {
 
   return (
     <>
-      {/* Overlay */}
+      {/* Enlarged Card */}
       {hoveredCard && (
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10000000000] flex items-center justify-center"
+          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10000000000] pointer-events-none"
         >
-          {/* Enlarged Card */}
           <div
-            className={` w-[150px] md:w-[300px] z-[30000000000] rotate-4 relative rounded-lg px-4 ${
+            className={`enlarged-card-container w-[150px] md:w-[300px] group transition-all duration-300 rotate-4 relative rounded-lg px-4 pointer-events-auto ${
               isClosing
                 ? "animate-[flipOut_0.6s_ease-in-out]"
                 : "animate-[flipIn_0.6s_ease-in-out]"
-            }`}
-            onClick={handleClose}
+            }
+             ${isTransitioning} ? "animate-[fadeIn_0.6s_ease-in-out]" : ""
+            `}
+            onMouseEnter={() => handleCardHover(cards[1])}
           >
             <Image
               src={hoveredCard.src}
               alt={hoveredCard.title}
               width={450}
               height={600}
-              className="w-full img-bg-shadow "
+              className="w-full img-bg-shadow"
             />
-            <div className="flex justify-center">
-
-            <button 
-            onClick={(e) => e.stopPropagation()}
-            className="cursor-pointer buyButton md:absolute right-14 bottom-3 font-extrabold md:!w-fit text-[8px] md:text-xs italic py-1 md:px-6 rounded-full">
-              WITHDRAW CARD
-            </button>
+            <div className="flex justify-center -mt-12">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClose();
+                }}
+                className="cursor-pointer buyButton transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 font-exo font-extrabold md:!w-fit text-[8px] md:text-sm italic py-1 md:px-6 rounded-full"
+              >
+                WITHDRAW CARD
+              </button>
             </div>
           </div>
         </div>
@@ -113,6 +151,18 @@ export default function CollectCardsCarousel() {
             opacity: 1;
           }
         }
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
 
         @keyframes flipOut {
           0% {
@@ -152,6 +202,8 @@ export default function CollectCardsCarousel() {
         .float-down {
           animation: float-down 3s ease-in-out infinite;
         }
+
+
       `}</style>
 
       <div className="md:-mt-20 z-[20000000000] font-exo flex space-x-1 sm:space-x-2 flex-row items-center justify-center">
@@ -159,8 +211,14 @@ export default function CollectCardsCarousel() {
           <div
             key={card.id}
             onMouseEnter={() => handleCardHover(card)}
-            className={`w-[180px] relative ease-in-out rounded-lg backdrop-blur-lg bg-white/40 pt-10 px-1 md:px-2 h-fit transition-transform duration-500 cursor-pointer hover:scale-105 ${
-              index === 1 ? "float-up mt-14 w-[200px]" : "float-down"
+            className={`card-item w-[180px] relative ease-in-out rounded-lg backdrop-blur-lg bg-white/40 pt-10 px-1 md:px-2 h-fit transition-transform duration-500 cursor-pointer hover:scale-105 ${
+              index === 1
+                ? hoveredCard
+                  ? "mt-14 w-[200px]"
+                  : "float-up mt-14 w-[200px]"
+                : hoveredCard
+                ? ""
+                : "float-down"
             }`}
           >
             <Image
