@@ -14,7 +14,6 @@ const Back = () => {
   useEffect(() => {
     // Initial load animation
     setHasAnimated(true);
-    
   }, []);
 
   useEffect(() => {
@@ -34,15 +33,15 @@ const Back = () => {
         setIsReturning(true);
         // Small delay before starting return animation
         // setTimeout(() => {
-          setImagesInCorners(false);
-          setImagesMoving(false);
-          setIsFlipped(false);
-          
-          // Trigger shake when images return
-          setTimeout(() => {
-            setIsShaking(true);
-            setIsReturning(false);
-          }, 800);
+        setImagesInCorners(false);
+        setImagesMoving(false);
+        setIsFlipped(false);
+
+        // Trigger shake when images return
+        setTimeout(() => {
+          setIsShaking(true);
+          setIsReturning(false);
+        }, 800);
         // }, 0);
       }, 3000);
 
@@ -66,24 +65,16 @@ const Back = () => {
     }
   };
 
-  // const handleCenterClick = () => {
-  //   console.log("object")
-  //   if (isFlipped && !showCenterFlip && !imagesMoving) {
-  //     setImagesMoving(true);
-  //   }
-  // };
+  const handleCenterClick = () => {
+    console.log("click is showing ");
+    if (isFlipped && !showCenterFlip && !imagesMoving) {
+      setImagesMoving(true);
 
-const handleCenterClick = () => {
-  console.log("click is showing ");
-  if (isFlipped && !showCenterFlip && !imagesMoving) {
-    setImagesMoving(true);
-
-    // immediately trigger visible animation state
-    setImagesInCorners(true);
-    setShowCenterFlip(true);
-  }
-};
-
+      // immediately trigger visible animation state
+      setImagesInCorners(true);
+      setShowCenterFlip(true);
+    }
+  };
 
   return (
     <>
@@ -140,7 +131,8 @@ const handleCenterClick = () => {
         }
 
         @keyframes zoomInOut {
-          0%, 100% {
+          0%,
+          100% {
             transform: scale(1);
           }
           25% {
@@ -239,14 +231,32 @@ const handleCenterClick = () => {
         }
 
         .hold-top-left {
-          transform: translate(-45vw, -40vh) rotate(-7deg);
+          transform: translate(-30vw, -40vh) rotate(17deg);
           filter: blur(4px);
         }
 
         .hold-bottom-right {
-          transform: translate(45vw, 40vh) rotate(7deg);
+          transform: translate(30vw, 30vh) rotate(17deg);
           filter: blur(4px);
         }
+
+        // .hold-top-left {
+        //   position: fixed;
+        //   top: 5%;
+        //   left: 5%;
+        //   transform: rotate(17deg);
+        //   filter: blur(4px);
+        //   animation
+          
+        // }
+
+        // .hold-bottom-right {
+        //   position: fixed;
+        //   bottom: 5%;
+        //   right: 5%;
+        //   transform: rotate(17deg);
+        //   filter: blur(4px);
+        // }
 
         .return-from-top-left {
           animation: returnFromTopLeft 0.8s ease-in-out forwards;
@@ -257,13 +267,21 @@ const handleCenterClick = () => {
         }
 
         @keyframes shakeLeftRight {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateX(0);
           }
-          10%, 30%, 50%, 70%, 90% {
+          10%,
+          30%,
+          50%,
+          70%,
+          90% {
             transform: translateX(-8px);
           }
-          20%, 40%, 60%, 80% {
+          20%,
+          40%,
+          60%,
+          80% {
             transform: translateX(8px);
           }
         }
@@ -294,15 +312,19 @@ const handleCenterClick = () => {
         <div
           className={`sm:w-[170px] w-[130px] transition-all duration-300 sm:-rotate-[5deg] h-[200px] mt-7 sm:mt-0 md:h-[300px] ${
             !hasAnimated ? "opacity-0" : ""
-          } ${hasAnimated && !imagesMoving && !imagesInCorners && !isReturning ? "slide-in-left" : ""} ${
+          } ${
+            hasAnimated && !imagesMoving && !imagesInCorners && !isReturning
+              ? "slide-in-left"
+              : ""
+          } ${
             !showCenterFlip && !imagesMoving && !imagesInCorners
               ? "hover:-rotate-7 hover:-translate-x-5 blur-[2px] hover:blur-[0]"
               : ""
           } ${imagesMoving && !imagesInCorners ? "move-to-top-left" : ""} ${
-            imagesInCorners && showCenterFlip ? "hold-top-left" : ""
-          } ${
-            isReturning && !imagesInCorners ? "return-from-top-left" : ""
-          } ${isShaking ? "shake-left-right-effect" : ""}`}
+            imagesInCorners && showCenterFlip ? "hold-top-left transition-all duration-300" : ""
+          } ${isReturning && !imagesInCorners ? "return-from-top-left" : ""} ${
+            isShaking ? "shake-left-right-effect" : ""
+          }`}
         >
           <Image
             src="/images/landingPage/openPacks/lorkana.png"
@@ -318,9 +340,11 @@ const handleCenterClick = () => {
           <div
             className={`relative sm:w-[200px] w-[150px] z-10 h-[300px] lg:-mt-24 md:h-[490px] cursor-pointer ${
               !hasAnimated ? "opacity-0" : ""
-            } ${hasAnimated && !imagesMoving && !isReturning ? "slide-in-bottom" : ""} ${
-              isShaking ? "zoom-shake-effect" : ""
-            }`}
+            } ${
+              hasAnimated && !imagesMoving && !isReturning
+                ? "slide-in-bottom"
+                : ""
+            } ${isShaking ? "zoom-shake-effect" : ""}`}
             onMouseEnter={handleCenterHover}
             onMouseLeave={handleCenterLeave}
             onClick={handleCenterClick}
@@ -416,11 +440,16 @@ const handleCenterClick = () => {
         <div
           className={`sm:w-[170px] w-[130px] transition-all duration-300 mt-7 sm:mt-0 sm:rotate-[5deg] h-[200px] md:h-[300px] ${
             !hasAnimated ? "opacity-0" : ""
-          } ${hasAnimated && !imagesMoving && !imagesInCorners && !isReturning ? "slide-in-right" : ""} ${
+          } ${
+            hasAnimated && !imagesMoving && !imagesInCorners && !isReturning
+              ? "slide-in-right"
+              : ""
+          } ${
             !showCenterFlip && !imagesMoving && !imagesInCorners
               ? "hover:rotate-7 hover:translate-x-5 blur-[2px] hover:blur-[0]"
               : ""
-          } ${imagesMoving && !imagesInCorners ? "move-to-bottom-right" : ""} ${
+            // } ${imagesMoving && !imagesInCorners ? "move-to-bottom-right" : ""} ${
+          } ${imagesMoving && !imagesInCorners ? "" : ""} ${
             imagesInCorners && showCenterFlip ? "hold-bottom-right" : ""
           } ${
             isReturning && !imagesInCorners ? "return-from-bottom-right" : ""
