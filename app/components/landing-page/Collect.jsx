@@ -109,7 +109,7 @@ export default function CollectCardsCarousel() {
           className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[10000000000] pointer-events-none"
         >
           <div
-            className={`enlarged-card-container w-[150px] md:w-[300px] group transition-all duration-300 rotate-4 relative rounded-lg px-4 pointer-events-auto ${
+            className={`enlarged-card-container w-[180px] md:w-[300px] group transition-all duration-300 rotate-4 relative rounded-lg px-4 pointer-events-auto ${
               isClosing
                 ? "animate-[flipOut_0.6s_ease-in-out]"
                 : "animate-[flipIn_0.6s_ease-in-out]"
@@ -206,7 +206,7 @@ export default function CollectCardsCarousel() {
 
       `}</style>
 
-      <div className="md:-mt-20 z-[20000000000] font-exo flex space-x-1 sm:space-x-2 flex-row items-center justify-center">
+      <div className="md:-mt-20 custom-h z-[20000000000] font-exo flex space-x-1 sm:space-x-2 flex-row items-center justify-center">
         {cards.map((card, index) => (
           <div
             key={card.id}
