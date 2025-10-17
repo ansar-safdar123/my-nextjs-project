@@ -132,7 +132,6 @@ export default function Home() {
               Virtually Open Packs with a wide range of brands etc etc text
             </h1>
           </div>
-
           <div
             className={`fixed z-[9999] bottom-5 right-6 md:right-16  transition-opacity duration-500 `}
           >
@@ -152,6 +151,8 @@ export default function Home() {
             </button>
           </div>
         </div>
+            <h1 className="text-center text-white VCR-font-family font-normal text-sm px-2 sm:text-2xl drop-shadow-[0_0_6px_rgba(255,255,255,0.6) mb-5 mt-8 md:mt-12 2xl:mt-20 ">SCROLL TO SEE RECENT PULLS</h1>
+
       </div>
 
       {activeKey === "open" && <RecentPullsSlider />}
