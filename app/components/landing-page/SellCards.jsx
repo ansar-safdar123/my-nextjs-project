@@ -112,7 +112,7 @@ export default function SellCards() {
         }
       `}</style>
 
-     <div className="flex lg:mb-20 gap-5 items-center flex-col lg:flex-row w-full justify-center">
+     <div className="flex lg:mb-20 custom-h gap-5 items-center flex-col lg:flex-row w-full  justify-center">
         <div className="flex flex-row items-center gap-2 justify-center min-h-[200px]">
           {availableCards.map((card, index) => (
             <div
@@ -172,7 +172,7 @@ export default function SellCards() {
 
            <div
             ref={boxRef}
-            className="md:w-96 w-[315px] h-60 mb-5 md:mb-0 border-2 border-white rounded-2xl p-2 md:p-4 overflow-auto"
+            className="md:w-96 w-[310px] h-60 mb-5 md:mb-0 border-2 border-white rounded-2xl p-2 md:p-4 overflow-auto"
           >
            <div className="flex flex-wrap gap-2 justify-center items-center h-full">
               {selectedCards.map((card, index) => (

@@ -179,9 +179,9 @@ const Buy = () => {
         }
       `}</style>
 
-      <div className="flex flex-col md:min-h-[350px] mt-3 md:mt-0 mb-10 items-center text-center">
+      <div className="flex flex-col custom-h md:min-h-[350px] mt-3  md:mt-0 mb-10 items-center text-center">
         {/* Top progress bar */}
-        <div className="w-full md:w-1/3 flex items-center md:space-x-3 mb-6">
+        <div className="w-full md:w-1/3 flex items-center md:space-x-3 px-10 -ml-5 mb-6">
           <div className="text-white font-normal font-teko text-lg md:text-2xl w-1/2">
             MONEY SAVED
           </div>
@@ -210,7 +210,7 @@ const Buy = () => {
                 onClick={() => handleCardClick(card)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`group w-[120px] sm:w-[140px] relative z-40 hover:z-50 bgBlur h-fit cursor-pointer ${
+                className={`group w-[130px] sm:w-[140px] relative z-40 hover:z-50 bgBlur h-fit cursor-pointer ${
                   isAnimating ? "invisible" : "visible"
                 } ${getHoverEffect(index, card)}`}
               >

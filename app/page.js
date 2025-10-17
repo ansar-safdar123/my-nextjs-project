@@ -89,7 +89,8 @@ export default function Home() {
   return (
     <>
       <div className="home md:min-h-screen">
-        <div className="text-white  px-3 sm:px-7 md:px-20 ">
+        {/* px-3 sm:px-7 md:px-20 */}
+        <div className="text-white ">
           <h1 className="text-center pt-2 VCR-font-family">
             WELCOME TO OPENTHATPACK
           </h1>
@@ -133,7 +134,7 @@ export default function Home() {
             </h1>
           </div>
           <div
-            className={`fixed z-[9999] bottom-5 right-6 md:right-16  transition-opacity duration-500 `}
+            className={`fixed z-[99999] bg-black/60 bottom-5 right-6 md:right-16  transition-opacity duration-500 `}
           >
             <button
               className="sticky-button relative w-10 h-10 md:w-12 md:h-[50px] border-2 border-white overflow-hidden group "
@@ -151,8 +152,11 @@ export default function Home() {
             </button>
           </div>
         </div>
-            <h1 className="text-center text-white VCR-font-family font-normal text-sm px-2 sm:text-2xl drop-shadow-[0_0_6px_rgba(255,255,255,0.6) mb-5 mt-8 md:mt-12 2xl:mt-20 ">SCROLL TO SEE RECENT PULLS</h1>
-
+        {activeKey === "open" && (
+          <h1 className="text-center text-white VCR-font-family font-normal text-sm px-2 sm:text-2xl drop-shadow-[0_0_6px_rgba(255,255,255,0.6) mb-5 mt-8 md:mt-12 2xl:mt-20 ">
+            SCROLL TO SEE RECENT PULLS
+          </h1>
+        )}
       </div>
 
       {activeKey === "open" && <RecentPullsSlider />}

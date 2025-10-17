@@ -151,13 +151,30 @@
   }
 }
 
+@keyframes cloudMove1 {
+  0% {
+    transform: translateX(100vw); /* Start from right */
+  }
+  100% {
+    transform: translateX(-120vw); /* Move fully left */
+  }
+}
+
 .cloud-animation {
   animation: cloudMove 5s linear infinite; /* speed 40s, adjust as needed */
 }
 
+
+.cloud-animation1{
+  animation: cloudMove1 5s linear infinite; /* slower for depth effect */
+}
+
+
+
 .cloud-animation-slow {
   animation: cloudMove 70s linear infinite; /* slower for depth effect */
 }
+
 
 @keyframes floatUpDown {
   0% {

@@ -206,7 +206,7 @@ export default function CollectCardsCarousel() {
 
       `}</style>
 
-      <div className="md:-mt-20 custom-h z-[20000000000] font-exo flex space-x-1 sm:space-x-2 flex-row items-center justify-center">
+      <div className="md:-mt-20 custom-h px-3 sm:px-7 md:px-20 z-[20000000000] font-exo flex space-x-1 sm:space-x-2 flex-row items-center justify-center">
         {cards.map((card, index) => (
           <div
             key={card.id}

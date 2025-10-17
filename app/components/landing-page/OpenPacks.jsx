@@ -9,7 +9,7 @@ const PackSlider = () => {
 
   return (
     <>
-      <div className="flex custom-h flex-row -space-x-10 sm:-space-x-8 md:-space-x-6  justify-center">
+      <div className="flex custom-h px-3 sm:px-7 md:px-20 flex-row -space-x-10 sm:-space-x-8 md:-space-x-6  justify-center">
         <div className=' sm:w-[170px] w-[130px] hover:-rotate-7 hover:-translate-x-5 transition-all duration-300  sm:-rotate-[5deg] blur-[2px] hover:blur-[0] h-[200] mt-7 sm:mt-0 md:h-[300px]'>
           <Image
             src="/images/landingPage/openPacks/lorkana.png"
