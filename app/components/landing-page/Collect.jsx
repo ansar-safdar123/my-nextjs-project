@@ -125,13 +125,13 @@ export default function CollectCardsCarousel() {
               height={600}
               className="w-full img-bg-shadow"
             />
-            <div className="flex justify-center -mt-12">
+            <div className="flex justify-center -mt-8 sm:-mt-12">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   handleClose();
                 }}
-                className="cursor-pointer buyButton transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 font-exo font-extrabold md:!w-fit text-[8px] md:text-sm italic py-1 md:px-6 rounded-full"
+                className="cursor-pointer buyButton transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 font-exo font-extrabold !w-fit text-[8px] md:text-sm italic py-1 px-2 md:px-6 rounded-full"
               >
                 WITHDRAW CARD
               </button>
