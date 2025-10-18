@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -32,64 +32,53 @@ body {
   font-family: var(--font-vcr);
 }
 
-
-
 /* utility: hide horizontal scrollbar for tab container */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-
-
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 @font-face {
-  font-family: 'VCR';
-  src: url('/fonts/VCR_OSD_Mono.ttf') format('truetype');
+  font-family: "VCR";
+  src: url("/fonts/VCR_OSD_Mono.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 .font-vcr {
-  font-family: 'VCR', monospace;
+  font-family: "VCR", monospace;
 }
 
 .font-fjalia {
-  font-family: 'Fjalla One', sans-serif;
+  font-family: "Fjalla One", sans-serif;
 }
 
-
-
-  .text-glow {
-    color: #ffffff;
-    text-shadow:
-    0 0 5px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.4),
-    0 0 20px rgba(255, 255, 255, 0.4),
+.text-glow {
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.4),
     0 0 40px rgba(255, 255, 255, 0.4);
-    /* animation: flicker 2s infinite alternate; */
-  }
-
+  /* animation: flicker 2s infinite alternate; */
+}
 
 @keyframes flicker {
   0% {
     opacity: 1;
-    text-shadow:
-      0 0 4px rgba(255, 255, 255, 0.6),
-      0 0 8px rgba(0, 170, 255, 0.8),
-      0 0 16px rgba(0, 170, 255, 0.5);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.6),
+      0 0 8px rgba(0, 170, 255, 0.8), 0 0 16px rgba(0, 170, 255, 0.5);
   }
   50% {
     opacity: 0.95;
-    text-shadow:
-      0 0 2px rgba(255, 255, 255, 0.5),
-      0 0 6px rgba(0, 170, 255, 0.6),
-      0 0 12px rgba(0, 170, 255, 0.4);
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5),
+      0 0 6px rgba(0, 170, 255, 0.6), 0 0 12px rgba(0, 170, 255, 0.4);
   }
   100% {
     opacity: 1;
-    text-shadow:
-      0 0 6px rgba(255, 255, 255, 0.8),
-      0 0 12px rgba(0, 170, 255, 0.8),
-      0 0 24px rgba(0, 170, 255, 0.6),
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.8),
+      0 0 12px rgba(0, 170, 255, 0.8), 0 0 24px rgba(0, 170, 255, 0.6),
       0 0 48px rgba(0, 170, 255, 0.4);
   }
 }
@@ -121,23 +110,18 @@ body {
   scrollbar-width: none; /* for Firefox */
 }
 
-
-.img-bg-shadow{
-  box-shadow: 0px 0px 80px 2px white
+.img-bg-shadow {
+  box-shadow: 0px 0px 80px 2px white;
 }
 
 @media (min-height: 700px) {
-    .custom-h {
-      /* background-color: red; */
-      margin-top: 50px;
-    }
+  .custom-h {
+    /* background-color: red; */
+    margin-top: 50px;
   }
+}
 
-  .sidebar-bg{
-    background: #07458D;
-
-  }
-            /* // setTimeout(() => setIsShaking(false), 800); */
-
-
-            
+.sidebar-bg {
+  background: #07458d;
+}
+/* // setTimeout(() => setIsShaking(false), 800); */

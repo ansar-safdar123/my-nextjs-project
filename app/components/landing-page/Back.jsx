@@ -10,11 +10,15 @@ const Back = () => {
   const [isShaking, setIsShaking] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
   const [isReturning, setIsReturning] = useState(false);
+  const [hasInitialAnimated, setHasInitialAnimated] = useState(false);
 
   useEffect(() => {
-    // Initial load animation
-    setHasAnimated(true);
-  }, []);
+    // Initial load animation - only once
+    if (!hasInitialAnimated) {
+      setHasAnimated(true);
+      setHasInitialAnimated(true);
+    }
+  }, [hasInitialAnimated]);
 
   useEffect(() => {
     if (imagesMoving && !imagesInCorners) {
@@ -32,17 +36,22 @@ const Back = () => {
         setShowCenterFlip(false);
         setIsReturning(true);
         // Small delay before starting return animation
-        // setTimeout(() => {
-        setImagesInCorners(false);
-        setImagesMoving(false);
-        setIsFlipped(false);
-
-        // Trigger shake when images return
         setTimeout(() => {
-          setIsShaking(true);
-          setIsReturning(false);
-        }, 800);
-        // }, 0);
+          setImagesInCorners(false);
+          setImagesMoving(false);
+          setIsFlipped(false);
+
+          // Trigger shake when images return
+          setTimeout(() => {
+            setIsShaking(true);
+            setIsReturning(false);
+
+            // Reset shake after animation completes
+            setTimeout(() => {
+              setIsShaking(false);
+            }, 800);
+          }, 800);
+        }, 0);
       }, 3000);
 
       return () => clearTimeout(holdTimer);
@@ -67,12 +76,16 @@ const Back = () => {
 
   const handleCenterClick = () => {
     console.log("click is showing ");
-    if (isFlipped && !showCenterFlip && !imagesMoving) {
+    if (
+      isFlipped &&
+      !showCenterFlip &&
+      !imagesMoving &&
+      !isReturning &&
+      !isShaking
+    ) {
+      // ONLY set imagesMoving to true
+      // Let useEffect handle the rest after 800ms
       setImagesMoving(true);
-
-      // immediately trigger visible animation state
-      setImagesInCorners(true);
-      setShowCenterFlip(true);
     }
   };
 
@@ -148,11 +161,11 @@ const Back = () => {
 
         @keyframes moveToTopLeft {
           0% {
-            transform: translate(0, 0) rotate(-7deg);
-            filter: blur(0px);
+            transform: translate(0, 0) rotate(-5deg);
+            filter: blur(2px);
           }
           100% {
-            transform: translate(-45vw, -40vh) rotate(17deg);
+            transform: translate(-30vw, -40vh) rotate(17deg);
             filter: blur(4px);
           }
         }
@@ -160,33 +173,33 @@ const Back = () => {
         @keyframes moveToBottomRight {
           0% {
             transform: translate(0, 0) rotate(5deg);
-            filter: blur(0px);
+            filter: blur(2px);
           }
           100% {
-            transform: translate(45vw, 40vh) rotate(7deg);
+            transform: translate(30vw, 25vh) rotate(17deg);
             filter: blur(4px);
           }
         }
 
         @keyframes returnFromTopLeft {
           0% {
-            transform: translate(-45vw, -40vh) rotate(-7deg);
+            transform: translate(-30vw, -40vh) rotate(17deg);
             filter: blur(4px);
           }
           100% {
             transform: translate(0, 0) rotate(-5deg);
-            filter: blur(0px);
+            filter: blur(2px);
           }
         }
 
         @keyframes returnFromBottomRight {
           0% {
-            transform: translate(45vw, 40vh) rotate(7deg);
+            transform: translate(30vw, 25vh) rotate(17deg);
             filter: blur(4px);
           }
           100% {
             transform: translate(0, 0) rotate(5deg);
-            filter: blur(0px);
+            filter: blur(2px);
           }
         }
 
@@ -223,47 +236,31 @@ const Back = () => {
         }
 
         .move-to-top-left {
-          animation: moveToTopLeft 0.8s ease-in-out forwards;
+          animation: moveToTopLeft 0.3s ease-in-out forwards;
         }
 
         .move-to-bottom-right {
-          animation: moveToBottomRight 0.8s ease-in-out forwards;
+          animation: moveToBottomRight 0.3s ease-in-out forwards;
         }
 
         .hold-top-left {
           transform: translate(-30vw, -40vh) rotate(17deg);
           filter: blur(4px);
+          transition: all 0.3s ease;
         }
 
         .hold-bottom-right {
-          transform: translate(30vw, 30vh) rotate(17deg);
+          transform: translate(30vw, 25vh) rotate(17deg);
           filter: blur(4px);
+          transition: all 0.3s ease;
         }
 
-        // .hold-top-left {
-        //   position: fixed;
-        //   top: 5%;
-        //   left: 5%;
-        //   transform: rotate(17deg);
-        //   filter: blur(4px);
-        //   animation
-          
-        // }
-
-        // .hold-bottom-right {
-        //   position: fixed;
-        //   bottom: 5%;
-        //   right: 5%;
-        //   transform: rotate(17deg);
-        //   filter: blur(4px);
-        // }
-
         .return-from-top-left {
-          animation: returnFromTopLeft 0.8s ease-in-out forwards;
+          animation: returnFromTopLeft 0.3s ease-in-out forwards;
         }
 
         .return-from-bottom-right {
-          animation: returnFromBottomRight 0.8s ease-in-out forwards;
+          animation: returnFromBottomRight 0.3s ease-in-out forwards;
         }
 
         @keyframes shakeLeftRight {
@@ -299,11 +296,64 @@ const Back = () => {
         }
 
         .zoom-shake-effect {
-          animation: zoomInOut 0.8s ease-in-out;
+          animation: zoomInOut 0.3s ease-in-out;
         }
 
         .shake-left-right-effect {
-          animation: shakeLeftRight 0.8s ease-in-out;
+          animation: shakeLeftRight 0.3s ease-in-out;
+        }
+
+        // Media Queries
+
+        @media (min-height: 700px) {
+          .hold-top-left {
+            transform: translate(-35vw, -30vh) rotate(17deg);
+          }
+          .hold-bottom-right {
+            transform: translate(35vw, 30vh) rotate(17deg);
+            filter: blur(4px);
+          }
+          @keyframes moveToTopLeft {
+            0% {
+              transform: translate(0, 0) rotate(-5deg);
+              filter: blur(2px);
+            }
+            100% {
+              transform: translate(-35vw, -30vh) rotate(17deg);
+              filter: blur(4px);
+            }
+          }
+          @keyframes moveToBottomRight {
+            0% {
+              transform: translate(0, 0) rotate(5deg);
+              filter: blur(2px);
+            }
+            100% {
+              transform: translate(35vw, 30vh) rotate(17deg);
+              filter: blur(4px);
+            }
+          }
+          @keyframes returnFromTopLeft {
+            0% {
+              transform: translate(-35vw, -30vh) rotate(17deg);
+              filter: blur(4px);
+            }
+            100% {
+              transform: translate(0, 0) rotate(-5deg);
+              filter: blur(2px);
+            }
+          }
+
+          @keyframes returnFromBottomRight {
+            0% {
+              transform: translate(35vw, 30vh) rotate(17deg);
+              filter: blur(4px);
+            }
+            100% {
+              transform: translate(0, 0) rotate(5deg);
+              filter: blur(2px);
+            }
+          }
         }
       `}</style>
 
@@ -311,9 +361,13 @@ const Back = () => {
         {/* Left Image */}
         <div
           className={`sm:w-[170px] w-[130px] transition-all duration-300 sm:-rotate-[5deg] h-[200px] mt-7 sm:mt-0 md:h-[300px] ${
-            !hasAnimated ? "opacity-0" : ""
+            !hasInitialAnimated ? "opacity-0" : ""
           } ${
-            hasAnimated && !imagesMoving && !imagesInCorners && !isReturning
+            hasAnimated &&
+            !imagesMoving &&
+            !imagesInCorners &&
+            !isReturning &&
+            !hasInitialAnimated
               ? "slide-in-left"
               : ""
           } ${
@@ -321,7 +375,7 @@ const Back = () => {
               ? "hover:-rotate-7 hover:-translate-x-5 blur-[2px] hover:blur-[0]"
               : ""
           } ${imagesMoving && !imagesInCorners ? "move-to-top-left" : ""} ${
-            imagesInCorners && showCenterFlip ? "hold-top-left transition-all duration-300" : ""
+            imagesInCorners && showCenterFlip ? "hold-top-left" : ""
           } ${isReturning && !imagesInCorners ? "return-from-top-left" : ""} ${
             isShaking ? "shake-left-right-effect" : ""
           }`}
@@ -339,9 +393,12 @@ const Back = () => {
         {!imagesInCorners && (
           <div
             className={`relative sm:w-[200px] w-[150px] z-10 h-[300px] lg:-mt-24 md:h-[490px] cursor-pointer ${
-              !hasAnimated ? "opacity-0" : ""
+              !hasInitialAnimated ? "opacity-0" : ""
             } ${
-              hasAnimated && !imagesMoving && !isReturning
+              hasAnimated &&
+              !imagesMoving &&
+              !isReturning &&
+              !hasInitialAnimated
                 ? "slide-in-bottom"
                 : ""
             } ${isShaking ? "zoom-shake-effect" : ""}`}
@@ -394,8 +451,6 @@ const Back = () => {
           <div
             className="relative sm:w-[200px] w-[150px] z-10 h-[300px] lg:-mt-24 md:h-[490px]"
             style={{ transformStyle: "preserve-3d" }}
-            // onMouseEnter={handleCenterHover}
-            // onMouseLeave={handleCenterLeave}
           >
             {/* Front - Pokemon */}
             <div
@@ -439,17 +494,20 @@ const Back = () => {
         {/* Right Image */}
         <div
           className={`sm:w-[170px] w-[130px] transition-all duration-300 mt-7 sm:mt-0 sm:rotate-[5deg] h-[200px] md:h-[300px] ${
-            !hasAnimated ? "opacity-0" : ""
+            !hasInitialAnimated ? "opacity-0" : ""
           } ${
-            hasAnimated && !imagesMoving && !imagesInCorners && !isReturning
+            hasAnimated &&
+            !imagesMoving &&
+            !imagesInCorners &&
+            !isReturning &&
+            !hasInitialAnimated
               ? "slide-in-right"
               : ""
           } ${
             !showCenterFlip && !imagesMoving && !imagesInCorners
               ? "hover:rotate-7 hover:translate-x-5 blur-[2px] hover:blur-[0]"
               : ""
-            // } ${imagesMoving && !imagesInCorners ? "move-to-bottom-right" : ""} ${
-          } ${imagesMoving && !imagesInCorners ? "" : ""} ${
+          } ${imagesMoving && !imagesInCorners ? "move-to-bottom-right" : ""} ${
             imagesInCorners && showCenterFlip ? "hold-bottom-right" : ""
           } ${
             isReturning && !imagesInCorners ? "return-from-bottom-right" : ""
