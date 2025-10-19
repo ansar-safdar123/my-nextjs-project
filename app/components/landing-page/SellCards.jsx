@@ -260,6 +260,7 @@
 // }
 
 
+
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -343,30 +344,32 @@ export default function SellCards() {
       )
     );
 
-    // Mark this card as returning
-    setReturningCards((prev) => new Set(prev).add(cardToRemove.id));
-
     // After fade out, remove from selected and add back to available
     setTimeout(() => {
       setSelectedCards((prev) =>
         prev.filter((_, idx) => idx !== indexToRemove)
       );
 
-      // Add back to available cards
-      setAvailableCards((prev) =>
-        prev.map((c) =>
-          c.id === cardToRemove.id ? { ...c, isSelected: false } : c
-        )
-      );
+      // Mark this card as returning right before adding it back
+      setReturningCards((prev) => new Set(prev).add(cardToRemove.id));
 
-      // Remove from returning cards after animation completes
+      // Add back to available cards with a slight delay
       setTimeout(() => {
-        setReturningCards((prev) => {
-          const newSet = new Set(prev);
-          newSet.delete(cardToRemove.id);
-          return newSet;
-        });
-      }, 400);
+        setAvailableCards((prev) =>
+          prev.map((c) =>
+            c.id === cardToRemove.id ? { ...c, isSelected: false } : c
+          )
+        );
+
+        // Remove from returning cards after animation completes
+        setTimeout(() => {
+          setReturningCards((prev) => {
+            const newSet = new Set(prev);
+            newSet.delete(cardToRemove.id);
+            return newSet;
+          });
+        }, 400);
+      }, 50);
     }, 400);
   };
 
