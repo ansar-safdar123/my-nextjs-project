@@ -14,42 +14,52 @@ const Buy = () => {
       id: 1,
       src: "/images/buyCards/1.png",
       title: "Bulbasaur",
-      price: "$121.90",
-      views: "22",
-      rate: "20% lower then market",
+      price: "$ 121.90",
+      views: "416",
+      rate: "20% lower hen market",
+      sellerName: "ASH",
+      seller: "SELLER",
     },
     {
       id: 2,
       src: "/images/buyCards/2.png",
       title: "Dragonair",
-      price: "$121.90",
-      views: "22",
+      price: "$ 121.90",
+      views: "416",
       rate: "10% lower then market",
+      sellerName: "ASH",
+      seller: "SELLER",
     },
     {
       id: 3,
       src: "/images/buyCards/3.png",
       title: "Charizard",
-      price: "$121.90",
-      views: "22",
+      price: "$ 121.90",
+      views: "416",
       rate: "30% lower then market",
+      sellerName: "ASH",
+      seller: "SELLER",
     },
     {
       id: 4,
       src: "/images/buyCards/4.png",
       title: "Lotad",
-      price: "$121.90",
-      views: "22",
+      price: "$ 121.90",
+      views: "416",
       rate: "50% lower then market",
+      sellerName: "ASH",
+      seller: "SELLER",
     },
-    {
-      id: 5,
-      src: "/images/buyCards/5.png",
-      title: "Castform",
-      price: "$121.90",
-      views: "22",
-      rate: "45% lower then market",
-    },
+    // {
+    //   id: 5,
+    //   src: "/images/buyCards/5.png",
+    //   title: "Castform",
+    //   price: "$ 121.90",
+    //   views: "416",
+    //   rate: "45% lower then market",
+    //   sellerName: "ASH",
+    //   seller: "SELLER",
+    // },
   ];
 
   const handleCardClick = (card) => {
@@ -82,7 +92,7 @@ const Buy = () => {
     // Find the current index in remaining cards array
     const remainingIndex = remainingCards.findIndex((c) => c.id === card.id);
     const isLastCard = remainingIndex === remainingCards.length - 1;
-    
+
     // Last remaining card moves right
     if (isLastCard) {
       // If this card or any card in the group is hovered
@@ -91,12 +101,12 @@ const Buy = () => {
       }
       return "ease-in-out transition-transform duration-300 hover:-translate-y-2 hover:rotate-3 hover:translate-x-6";
     }
-    
+
     // All other cards move left when any card is hovered
     if (hoveredIndex !== null) {
       return "ease-in-out transition-transform duration-300 -translate-x-6";
     }
-    
+
     // Default hover state
     return "ease-in-out transition-transform duration-300 hover:translate-y-2 hover:-rotate-3 hover:-translate-x-6";
   };
@@ -122,7 +132,7 @@ const Buy = () => {
               className="w-full h-auto"
             />
             <div className="absolute top-0 left-0 flex items-center gap-2 w-full p-2">
-              <p className="backdrop-blur bg-black/60 text-white text-[12px] px-2 py-1 rounded-lg font-exo font-bold">
+              <p className="backdrop-blur bg-black/60 text-white text-[12px] px-2 py-1 rounded-lg font-teko font-bold">
                 {animatingCard.views}
               </p>
               <div className="w-6 h-6 p-1 rounded-lg flex items-center justify-center backdrop-blur bg-black/60">
@@ -181,13 +191,15 @@ const Buy = () => {
 
       <div className="flex flex-col custom-h md:min-h-[350px] mt-3  md:mt-0 mb-10 items-center text-center">
         {/* Top progress bar */}
-        <div className="w-full md:w-1/3 flex items-center md:space-x-3 px-10 -ml-5 mb-6">
-          <div className="text-white font-normal font-teko text-lg md:text-2xl w-1/2">
+        <div className="w-full md:w-[26%] flex items-center  gap-2  mb-6">
+          <div className="text-white font-normal font-teko text-lg text-right w-[40%]">
             MONEY SAVED
           </div>
-          <div className="relative w-full bg-[#c7d6fd] progressBAr rounded-full h-3">
+          {/* background: #FFFFFF29; */}
+
+          <div className="relative w-full bg-[#FFFFFF29] progressBAr rounded-full h-3 ">
             <div
-              className="absolute top-0 left-0 h-3 bg-[#76adff] rounded-full transition-all duration-500 ease-in-out"
+              className="absolute top-[1px] left-[1px] h-[8px] bg-white shadow-[0_0_10px_2px_rgba(255,255,255,0.8)]  rounded-full transition-all duration-500 ease-in-out"
               style={{
                 width: `${(selectedCards.length / cards.length) * 100}%`,
               }}
@@ -196,7 +208,7 @@ const Buy = () => {
         </div>
 
         {/* Card stack */}
-        <div className="-space-x-24 mb-10 flex items-center justify-center">
+        <div className="-space-x-[70px] mb-10 flex items-center justify-center">
           {cards.map((card, index) => {
             const isSelected = selectedCards.find((c) => c.id === card.id);
             const isAnimating = animatingCard?.id === card.id;
@@ -225,11 +237,11 @@ const Buy = () => {
                 />
 
                 {/* Top overlay (views info) */}
-                <div className="absolute top-0 left-0 flex items-center gap-2 w-full p-2">
-                  <p className="backdrop-blur bg-black/60 text-white text-[12px] px-2 py-1 rounded-lg font-exo font-bold">
+                <div className="absolute top-0 left-0 flex items-center gap-1 w-full p-2">
+                  <p className="backdrop-blur bg-black/90 text-white text-[13px] px-2 pt-[2px] rounded-lg font-teko font-light">
                     {card.views}
                   </p>
-                  <div className="w-6 h-6 p-1 rounded-lg flex items-center justify-center backdrop-blur bg-black/60">
+                  <div className="w-5 h-5 p-1 rounded-lg flex items-center justify-center backdrop-blur bg-black/90">
                     <Image
                       src="/images/landingPage/buyCards/views.png"
                       alt="views"
@@ -241,11 +253,41 @@ const Buy = () => {
                 </div>
 
                 {/* Card Bottom Info */}
-                <div className="pb-2 flex flex-col items-start">
+                {/* <div className="pb-2 flex flex-col items-start">
                   <p className="text-white font-exo text-sm font-extrabold">
                     {card.price}
                   </p>
                   <button className="buyButton font-extrabold text-[10px] italic py-1 px-6 rounded-full mt-1">
+                    BUY CARD
+                  </button>
+                </div> */}
+                <div className="pb-2 pt-1 font-exo flex flex-col items-start">
+                  <div className="flex pb-1 justify-between w-full items-center">
+                    <p className="text-[12px] italic text-white font-exo font-extrabold">
+                      {card.price}
+                    </p>
+
+                    <div className="flex items-center gap-1">
+                      <div className="flex flex-col ">
+                        <span className="text-[7px] p-0 -mb-[2px] font-bold font-exo italic">
+                          {card.sellerName}
+                        </span>
+                        <span className="text-[5px] p-0 m-0 font-medium text-right font-teko italic">
+                          {card.seller}
+                        </span>
+                      </div>
+                      <div className="w-3 h-3">
+                        <Image
+                          src="/images/buyCards/4.png"
+                          alt="views"
+                          width={300}
+                          height={300}
+                          className="w-full object-fill"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <button className="buyButton font-extrabold font-exo text-[10px] italic sm:py-[2px] rounded-full">
                     BUY CARD
                   </button>
                 </div>
