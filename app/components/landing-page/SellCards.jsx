@@ -554,7 +554,7 @@ export default function SellCards() {
                     </div>
                   </div>
                 </div>
-                <div className="flex bg-[#2C3754] p-1 py-[2px] gap-1 w-full  rounded-full">
+                <div className="flex bg-[#2C3754] p-1 py-[2px] gap-1 w-full md:flex-row flex-col rounded-md md:rounded-full">
 
                 <button 
                   className="bg-white text-[#2C3754] font-extrabold font-exo text-[6px] italic p-[2px] px-1 pb-1 rounded-full"
