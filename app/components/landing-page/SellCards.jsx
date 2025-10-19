@@ -15,49 +15,57 @@ export default function SellCards() {
       id: 3,
       src: "/images/buyCards/3.png",
       title: "Charizard",
-      price: "$121.90",
+      price: "$ 121.90",
       views: "22",
+      sellerName: "ASH",
+      seller: "SELLER",
     },
     {
       id: 4,
       src: "/images/buyCards/4.png",
       title: "Lotad",
-      price: "$121.90",
+      price: "$ 121.90",
       views: "22",
+      sellerName: "ASH",
+      seller: "SELLER",
     },
     {
       id: 5,
       src: "/images/buyCards/5.png",
       title: "Castform",
-      price: "$121.90",
+      price: "$ 121.90",
       views: "22",
+      sellerName: "ASH",
+      seller: "SELLER",
     },
   ];
 
   useEffect(() => {
     setMounted(true);
-    setAvailableCards(allCards.map(card => ({ ...card, isSelected: false })));
+    setAvailableCards(allCards.map((card) => ({ ...card, isSelected: false })));
   }, []);
 
   const handleCardClick = (card) => {
     // Mark card as selected to trigger fade out
-    setAvailableCards((prev) => 
-      prev.map((c) => c.id === card.id ? { ...c, isSelected: true } : c)
+    setAvailableCards((prev) =>
+      prev.map((c) => (c.id === card.id ? { ...c, isSelected: true } : c))
     );
-    
+
     // Add to selected cards with fade in after fade out completes
     setTimeout(() => {
       setSelectedCards((prev) => [...prev, card]);
-      
+
       // After all 3 cards are selected, animate box out and reset
       if (selectedCards.length === 2) {
         setTimeout(() => {
           setBoxAnimatingOut(true);
-          
+
           setTimeout(() => {
             setSelectedCards([]);
             setBoxAnimatingOut(false);
-            setAvailableCards(allCards.map(card => ({ ...card, isSelected: false })));
+            setAvailableCards(
+              allCards.map((card) => ({ ...card, isSelected: false }))
+            );
           }, 800);
         }, 1500);
       }
@@ -66,7 +74,7 @@ export default function SellCards() {
 
   return (
     <>
-   <style jsx>{`
+      <style jsx>{`
         @keyframes slideInFromLeft {
           0% {
             transform: translateX(-100vw);
@@ -112,7 +120,7 @@ export default function SellCards() {
         }
       `}</style>
 
-     <div className="flex lg:mb-20 custom-h gap-5 items-center flex-col lg:flex-row w-full  justify-center">
+      <div className="flex lg:mb-20 custom-h gap-5 items-center flex-col lg:flex-row w-full  justify-center">
         <div className="flex flex-row items-center gap-2 justify-center min-h-[200px]">
           {availableCards.map((card, index) => (
             <div
@@ -122,8 +130,8 @@ export default function SellCards() {
               style={{
                 animation: card.isSelected
                   ? "fadeOut 0.4s ease-out forwards"
-                  : mounted 
-                  ? `slideInFromLeft 0.3s ease-out forwards` 
+                  : mounted
+                  ? `slideInFromLeft 0.3s ease-out forwards`
                   : "none",
                 pointerEvents: card.isSelected ? "none" : "auto",
                 opacity: card.isSelected ? 0 : undefined,
@@ -137,7 +145,7 @@ export default function SellCards() {
                 className="w-full h-auto"
                 priority
               />
-              <div className="absolute top-0 left-0 flex items-center gap-1 sm:gap-2 w-full p-1">
+              {/* <div className="absolute top-0 left-0 flex items-center gap-1 sm:gap-2 w-full p-1">
                 <p className="backdrop-blur bg-black/60 text-white text-[10px] px-[5px] py-[1px] sm:py-1 rounded-lg font-exo font-bold">
                   {card.views}
                 </p>
@@ -150,13 +158,13 @@ export default function SellCards() {
                     className="w-full object-contain"
                   />
                 </div>
-              </div>
+              </div> */}
               <div className="pb-2 pt-1 flex flex-col items-start">
-                <p className="text-[10px] text-white font-exo font-extrabold">
+                <p className="text-[8px] italic text-white font-exo font-extrabold">
                   {card.price}
                 </p>
-                <button className="buyButton font-extrabold text-[10px] italic sm:px-1 rounded-full">
-                  SELECT CARD
+                <button className="buyButton font-extrabold font-exo text-[8px] italic sm:py-[2px] rounded-full">
+                  SELL CARD
                 </button>
               </div>
             </div>
@@ -164,17 +172,21 @@ export default function SellCards() {
         </div>
 
         <div
-          className={boxAnimatingOut ? "animate-[slideOutLeft_0.8s_ease-in_forwards]" : ""}
+          className={
+            boxAnimatingOut
+              ? "animate-[slideOutLeft_0.8s_ease-in_forwards]"
+              : ""
+          }
         >
-          <h1 className="font-teko text-center text-2xl md:text-4xl text-white">
+          <h1 className="VCR-font-family my-2 text-center text-2xl md:text-2xl text-white">
             MY LISTINGS
           </h1>
 
-           <div
+          <div
             ref={boxRef}
-            className="md:w-96 w-[310px] h-60 mb-5 md:mb-0 border-2 border-white rounded-2xl p-2 md:p-4 overflow-auto"
+            className="md:w-96 w-[310px] h-60 mb-5 md:mb-0 border border-white rounded-2xl p-2 md:p-4 overflow-auto"
           >
-           <div className="flex flex-wrap gap-2 justify-center items-center h-full">
+            <div className="flex flex-wrap gap-2 justify-center items-center h-full">
               {selectedCards.map((card, index) => (
                 <div
                   key={`${card.id}-${index}`}
@@ -190,7 +202,7 @@ export default function SellCards() {
                     height={350}
                     className="w-full h-auto"
                   />
-                  <div className="absolute top-0 left-0 flex items-center gap-1 sm:gap-2 w-full p-1">
+                  {/* <div className="absolute top-0 left-0 flex items-center gap-1 sm:gap-2 w-full p-1">
                     <p className="backdrop-blur bg-black/60 text-white text-[10px] px-[5px] py-[1px] sm:py-1 rounded-lg font-exo font-bold">
                       {card.views}
                     </p>
@@ -203,7 +215,7 @@ export default function SellCards() {
                         className="w-full object-contain"
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="pb-2 pt-1 flex flex-col items-start">
                     <p className="text-[10px] text-white font-exo font-extrabold">
                       {card.price}
@@ -220,4 +232,4 @@ export default function SellCards() {
       </div>
     </>
   );
-} 
+}

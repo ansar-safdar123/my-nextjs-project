@@ -109,7 +109,7 @@
 .buyButton {
     background: linear-gradient(180deg, #FFFFFF 0%, #E4B607 100%);
     color: #2C3754;
-    border: 1.5px solid #2C3754;
+    border: 1.5px solid #161e36;
     width: 100%;
 
 }
@@ -117,7 +117,7 @@
     backdrop-filter: blur(15px);
     background: #A5A3A326;
     /* border: 2px solid #FFFFFF1A; */
-    border-radius: 16px;
+    border-radius: 7px;
     padding: 7px 7px 0px;
 }
 
@@ -128,16 +128,25 @@
 }
 
 /* Background reflection behind main text */
+/* .bg-reflect-text::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: rgba(255, 255, 255, 0.45); 
+  transform: scale(0.82); 
+  filter: blur(8px);
+  z-index: -1; 
+} */
+
 .bg-reflect-text::before {
   content: attr(data-text);
   position: absolute;
   inset: 0;
-  color: rgba(255, 255, 255, 0.45); /* slightly softer reflection */
-  transform: scale(0.82); /* smaller so glow spreads evenly */
+  color: rgba(255, 255, 255, 0.3); /* slightly softer reflection */
+  transform: scaleX(0.80); /* smaller so glow spreads evenly */
   filter: blur(8px); /* big blur = wide spread */
   z-index: -1; /* stays behind main text */
 }
-
 
 
 
