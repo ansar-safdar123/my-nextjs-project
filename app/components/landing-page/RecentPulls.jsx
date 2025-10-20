@@ -83,8 +83,8 @@ export default function RecentPullsSlider() {
                 <Image
                   src={card}
                   alt={`Card ${index + 1}`}
-                  width={800}
-                  height={800}
+                  width={300}
+                  height={300}
                   quality={100}
                   className="w-32 sm:w-48 sm:h-64 rounded-lg shadow-2xl object-cover transition-all duration-500 ease-in-out group-hover:scale-125 group-hover:-rotate-6"
                 />

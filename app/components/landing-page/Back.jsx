@@ -360,7 +360,7 @@ const Back = () => {
       <div className="flex custom-h px-3 sm:px-7 md:px-20 flex-row -space-x-10 sm:-space-x-8 md:-space-x-6 justify-center relative">
         {/* Left Image */}
         <div
-          className={`sm:w-[170px] w-[130px] transition-all duration-300 sm:-rotate-[5deg] h-[200px] mt-7 sm:mt-0 md:h-[300px] ${
+          className={`sm:w-[170px] w-[130px]  transition-all duration-300 sm:-rotate-[5deg] h-[200px] mt-7 sm:mt-0 md:h-[300px] ${
             !hasInitialAnimated ? "opacity-0" : ""
           } ${
             hasAnimated &&

@@ -18,14 +18,6 @@ const exo = Exo({
   display: "swap",
 });
 
-// const vcr = localFont({
-//   // src: "../public/fonts/VCR_OSD_Mono.ttf",
-//   src: "../fonts/VCR_OSD_Mono.ttf",
-
-//   variable: "--font-vcr", // 👈 this will create a CSS variable
-//   weight: "400",
-//   style: "normal",
-// });
 
 const fjallaOne = Fjalla_One({ 
   weight: '400',

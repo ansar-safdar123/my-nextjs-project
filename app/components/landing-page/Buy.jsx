@@ -50,16 +50,16 @@ const Buy = () => {
       sellerName: "ASH",
       seller: "SELLER",
     },
-    // {
-    //   id: 5,
-    //   src: "/images/buyCards/5.png",
-    //   title: "Castform",
-    //   price: "$ 121.90",
-    //   views: "416",
-    //   rate: "45% lower then market",
-    //   sellerName: "ASH",
-    //   seller: "SELLER",
-    // },
+    {
+      id: 5,
+      src: "/images/buyCards/5.png",
+      title: "Castform",
+      price: "$ 121.90",
+      views: "416",
+      rate: "45% lower then market",
+      sellerName: "ASH",
+      seller: "SELLER",
+    },
   ];
 
   const handleCardClick = (card) => {
@@ -208,7 +208,7 @@ const Buy = () => {
         </div>
 
         {/* Card stack */}
-        <div className="-space-x-[70px] mb-10 flex items-center justify-center">
+        <div className="-space-x-24 md:-space-x-[70px] mb-10 flex items-center justify-center">
           {cards.map((card, index) => {
             const isSelected = selectedCards.find((c) => c.id === card.id);
             const isAnimating = animatingCard?.id === card.id;

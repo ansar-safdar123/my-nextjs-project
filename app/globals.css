@@ -26,10 +26,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  font-display: swap;
 }
 
 .font-vcr {
   font-family: var(--font-vcr);
+  font-display: swap;
+
 }
 
 /* utility: hide horizontal scrollbar for tab container */
@@ -46,14 +49,20 @@ body {
   src: url("/fonts/VCR_OSD_Mono.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+
 }
 
 .font-vcr {
   font-family: "VCR", monospace;
+  font-display: swap;
+
 }
 
 .font-fjalia {
   font-family: "Fjalla One", sans-serif;
+  font-display: swap;
+
 }
 
 .text-glow {
@@ -61,6 +70,8 @@ body {
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
     0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.4),
     0 0 40px rgba(255, 255, 255, 0.4);
+  font-display: swap;
+
   /* animation: flicker 2s infinite alternate; */
 }
 

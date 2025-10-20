@@ -116,62 +116,7 @@ export default function SellCards() {
 
   return (
     <>
-      <style jsx>{`
-        @keyframes slideInFromLeft {
-          0% {
-            transform: translateX(-100vw);
-            opacity: 0;
-          }
-          100% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes fadeOut {
-          0% {
-            opacity: 1;
-            transform: scale(1);
-          }
-          100% {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-        }
-
-        @keyframes fadeIn {
-          0% {
-            opacity: 0;
-            transform: scale(0.8);
-          }
-          100% {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        @keyframes slideOutLeft {
-          0% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-          100% {
-            transform: translateX(-100vw);
-            opacity: 0;
-          }
-        }
-
-        @keyframes slideOutLeft {
-          0% {
-            transform: translateX(0);
-            opacity: 1;
-          }
-          100% {
-            transform: translateX(-100vw);
-            opacity: 0;
-          }
-        }
-      `}</style>
+     
 
       <div className="flex lg:mb-20 custom-h gap-10 items-center flex-col lg:flex-row w-full  justify-center">
         <div className="flex flex-row items-center gap-2 justify-center min-h-[200px]">

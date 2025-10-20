@@ -1,4 +1,4 @@
-@import url("https://fonts.cdnfonts.com/css/vcr-osd-mono");
+/* @import url("https://fonts.cdnfonts.com/css/vcr-osd-mono"); */
 
 .page-background {
   background: linear-gradient(
@@ -67,45 +67,8 @@
   background: linear-gradient(360deg, #4949db 0%, rgba(73, 73, 219, 0) 57.34%);
 }
 
-.body1 {
-  margin: 0;
-  height: 100vh;
-  background: #15153d;
-  position: relative;
-  /* overflow: hidden; */
-}
 
-/* Top Left Shadow */
-.body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: radial-gradient(
-    circle at top left,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0) 70%
-  );
-  pointer-events: none;
-}
 
-/* Top Right Shadow */
-.body::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: radial-gradient(
-    circle at top right,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0) 70%
-  );
-  pointer-events: none;
-}
 
 .progressBAr {
   /* box-shadow: 0px 0px 4px 0px #FFFFFF; */
@@ -275,3 +238,97 @@
   transition: transform 0.4s ease;
   transform-origin: center center;
 }
+
+/* =========================================================
+   OPEN PACK STYLING SECTION
+   Description: All the styles related to open pack animations,
+   layout and effects.
+   ========================================================= */
+
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+}
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-35px);
+  }
+}
+.swing-animation {
+  animation: swing 3s ease-in-out infinite;
+}
+.float-animation {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   Sell cards STYLING SECTION
+   Description: All the styles related to Sell cards animations,
+   layout and effects.
+   ========================================================= */
+
+
+       @keyframes slideInFromLeft {
+          0% {
+            transform: translateX(-100vw);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes fadeOut {
+          0% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+        }
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        @keyframes slideOutLeft {
+          0% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(-100vw);
+            opacity: 0;
+          }
+        }
+
+        @keyframes slideOutLeft {
+          0% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(-100vw);
+            opacity: 0;
+          }
+        }
